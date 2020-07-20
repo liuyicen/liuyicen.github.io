@@ -67,7 +67,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: false
+  powered: true
 
   # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -94,10 +94,10 @@ creative_commons:
 
 # ---------------------------------------------------------------
 # Scheme Settings
+# 主题样式设置
 # ---------------------------------------------------------------
 
 # Schemes
-#主题样式设置
 #scheme: Muse
 #scheme: Mist
 #scheme: Pisces
@@ -116,38 +116,43 @@ darkmode: false
 # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
 # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
 # External url should start with http:// or https://
-#菜单设置
 menu:
   #首页
-  home: / || home
+  home: / || fa fa-home
   #关于
-  about: /about/ || user
+  about: /about/ || fa fa-user
   #标签
-  tags: /tags/ || tags
+  tags: /tags/ || fa fa-tags
   #分类
-  categories: /categories/ || th
+  categories: /categories/ || fa fa-th
   #归档
-  archives: /archives/ || archive
+  archives: /archives/ || fa fa-archive
+  #书单
+  books: /books/ || fa fa-book
   #日程表
-  #schedule: /schedule/ || calendar
+  #schedule: /schedule/ || fa fa-calendar
   #站点地图
-  #sitemap: /sitemap.xml || sitemap
+  #sitemap: /sitemap.xml || fa fa-sitemap
   #公益404
-  #commonweal: /404/ || heartbeat
+  #commonweal: /404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
+  # 菜单图片
   icons: true
+  # 数量显示
   badges: false
+
 
 
 # ---------------------------------------------------------------
 # Sidebar Settings
 # See: https://theme-next.org/docs/theme-settings/sidebar
+# 侧栏设置
 # ---------------------------------------------------------------
-#侧栏设置
+
 sidebar:
-  # Sidebar Position.侧栏位置（只对Pisces | Gemini两种风格有效）
+  # Sidebar Position.
   position: left
   #position: right
 
@@ -156,8 +161,7 @@ sidebar:
   # Pisces | Gemini: 240
   #width: 300
 
-  # Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
-  # Sidebar Display (only for Muse | Mist), available values:
+  # Sidebar Display (only for Muse | Mist), available values:侧栏显示时机（只对Muse | Mist两种风格有效）
   #  - post    expand on posts automatically. Default.#默认行为，在文章页面（拥有目录列表）时显示
   #  - always  expand for all pages automatically.#在所有页面中都显示
   #  - hide    expand only when click on the sidebar toggle icon.#在所有页面中都隐藏（可以手动展开）
@@ -194,8 +198,8 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || fab fa-github
-  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  GitHub: https://github.com/liuyicen || fab fa-github
+  E-Mail: mailto:857321115@qq.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -222,15 +226,15 @@ links:
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
-#去掉文章目录标题的自动编号
+# 文章目录
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: false
+  number: true
   # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: false
+  wrap: true
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: false
+  expand_all: true
   # Maximum heading depth of generated toc.
   max_depth: 6
 
@@ -296,7 +300,6 @@ follow_me:
   #Telegram: https://t.me/channel_name || fab fa-telegram
   #WeChat: /images/wechat_channel.jpg || fab fa-weixin
   #RSS: /atom.xml || fa fa-rss
-  RSS: /atom.xml
 
 # Related popular posts
 # Dependencies: https://github.com/tea3/hexo-related-popular-posts
@@ -408,7 +411,7 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
+  enable: true
   permalink: https://github.com/yourname
   title: Follow me on GitHub
 
@@ -757,9 +760,8 @@ algolia_search:
 
 # Local Search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
-#添加搜索功能
 local_search:
-  enable: true
+  enable: false
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
