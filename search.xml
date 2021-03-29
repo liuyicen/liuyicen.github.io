@@ -137,7 +137,7 @@
       </tags>
   </entry>
   <entry>
-    <title>面试汇总</title>
+    <title>发散性问题汇总</title>
     <url>/2021/03/29/%E5%8F%91%E6%95%A3%E6%80%A7%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h1 id="发散性问题汇总"><a href="#发散性问题汇总" class="headerlink" title="发散性问题汇总"></a>发散性问题汇总</h1><h2 id="如何从100亿URL中找出相同的URL？"><a href="#如何从100亿URL中找出相同的URL？" class="headerlink" title="如何从100亿URL中找出相同的URL？"></a>如何从100亿URL中找出相同的URL？</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
 <li>给定a、b两个文件，各存放50亿个URL，每个URL各占64B，内存限制是4G。请找出a、b两个文件共同的URL。</li>
