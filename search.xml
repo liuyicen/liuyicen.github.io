@@ -3,20 +3,28 @@
   <entry>
     <title>发散性问题汇总</title>
     <url>/2021/03/29/%E5%8F%91%E6%95%A3%E6%80%A7%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h1 id="发散性问题汇总"><a href="#发散性问题汇总" class="headerlink" title="发散性问题汇总"></a>发散性问题汇总</h1><h2 id="如何从100亿URL中找出相同的URL？"><a href="#如何从100亿URL中找出相同的URL？" class="headerlink" title="如何从100亿URL中找出相同的URL？"></a>如何从100亿URL中找出相同的URL？</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
+    <content><![CDATA[<h1 id="如何从100亿URL中找出相同的URL？"><a href="#如何从100亿URL中找出相同的URL？" class="headerlink" title="如何从100亿URL中找出相同的URL？"></a>如何从100亿URL中找出相同的URL？</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><ul>
 <li>给定a、b两个文件，各存放50亿个URL，每个URL各占64B，内存限制是4G。请找出a、b两个文件共同的URL。</li>
 </ul>
-<h3 id="解答思路"><a href="#解答思路" class="headerlink" title="解答思路"></a>解答思路</h3><ul>
-<li>每个URL占64B，那么50亿个URL占用空间大约为320GB。5000000000<em>64B≈5GB</em>64=320GB</li>
+<h2 id="解答思路"><a href="#解答思路" class="headerlink" title="解答思路"></a>解答思路</h2><ul>
+<li>每个URL占64B，那么50亿个URL占用空间大约为320GB。</li>
+<li>5000000000_64B≈5GB_64=320GB</li>
 <li>由于内存大小只有4G，因此我们不可能一次性将所有URL加载到内存中进行处理。对于这类型题目，一般采用分治策略，即：把一个文件中的URL按照某个特征划分为多个小文件，使得每个小文件大小不超过4G，这样就可以把这些小文件读到内存中进行处理了。</li>
 </ul>
-<h3 id="思路如下"><a href="#思路如下" class="headerlink" title="思路如下"></a>思路如下</h3><ol>
-<li>首先遍历文件a，对遍历到的URL求hash(URL)%1000,根据计算结果把遍历到的URL存储到a0,a1,a2,…,a999,这样每个大小约为300MB。</li>
-<li>使用同样的方法遍历文件b，把文件b中的URL分别存储到文件b0,b1,b2,…,b999中。</li>
-<li>这样处理过后，所有可能相同的URL都在对应的小文件中，即a0对应的b0,…,a999对应的 b999，不对应的小文件中不可能有相同的URL。</li>
-<li>那么接下来，我们只需要求出这1000对小文件中相同的URL就好了。</li>
-<li>紧接着遍历ai(i∈[0,999]),把URL存储到一个HashSet集合中。</li>
-<li>然后遍历bi中每一个URL，看在HashSet集合中是否存在，若存在，说明这就是共同的URL，把这个URL保存到一个单独的文件中。</li>
+<h2 id="思路如下"><a href="#思路如下" class="headerlink" title="思路如下"></a>思路如下</h2><ol>
+<li><p>首先遍历文件a，对遍历到的URL求hash(URL)%1000,根据计算结果把遍历到的URL存储到a0,a1,a2,…,a999,这样每个大小约为300MB。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">字符串对象的哈希码根据以下公式计算：</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> h = hash;</span><br><span class="line">    <span class="keyword">if</span>(h ==<span class="number">0</span> &amp;&amp; value.length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">char</span> val[] = value;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; value.length; i++)&#123;</span><br><span class="line">            <span class="comment">//31为奇素数，31*i == (i&lt;&lt;5) - i</span></span><br><span class="line">            h = <span class="number">31</span> * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用同样的方法遍历文件b，把文件b中的URL分别存储到文件b0,b1,b2,…,b999中。</p>
+</li>
+<li><p>这样处理过后，所有可能相同的URL都在对应的小文件中，即a0对应的b0,…,a999对应的 b999，不对应的小文件中不可能有相同的URL。</p>
+</li>
+<li><p>那么接下来，我们只需要求出这1000对小文件中相同的URL就好了。</p>
+</li>
+<li><p>紧接着遍历ai(i∈[0,999]),把URL存储到一个HashSet集合中。</p>
+</li>
+<li><p>然后遍历bi中每一个URL，看在HashSet集合中是否存在，若存在，说明这就是共同的URL，把这个URL保存到一个单独的文件中。</p>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -25,6 +33,7 @@
       <tags>
         <tag>java</tag>
         <tag>面试</tag>
+        <tag>发散性问题</tag>
       </tags>
   </entry>
   <entry>
