@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-06-28 23:17:46 / 修改时间：01:42:33" itemprop="dateCreated datePublished" datetime="2021-06-28T23:17:46+08:00">2021-06-28</time>
+              <time title="创建时间：2021-06-28 23:17:46 / 修改时间：01:45:33" itemprop="dateCreated datePublished" datetime="2021-06-28T23:17:46+08:00">2021-06-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,22 +270,11 @@
     }<span class="keyword">while</span>(!<span class="keyword">this</span>.compareAndSwapInt(var1,var2,var5,var5+var4));
     <span class="keyword">return</span> var5;
 }
-&lt;!--￼<span class="number">0</span>--&gt;
-<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
-      <span class="keyword">synchronized</span> (lockA) {
-          System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有："</span> + lockA +<span class="string">"\t,尝试获取锁："</span> + lockB);
-          <span class="keyword">try</span> {
-              TimeUnit.SECONDS.sleep(<span class="number">2</span>);
-          } <span class="keyword">catch</span> (InterruptedException e) {
-              e.printStackTrace();
-          }
-          <span class="keyword">synchronized</span> (lockB) {
-              System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有："</span> + lockB +<span class="string">"\t,尝试获取锁："</span> + lockA);
-          }
-      }
-}</code></pre>
+&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
 </li>
 </ul>
+</li>
+<li><!--死锁-->
 </li>
 </ul>
 </li>
