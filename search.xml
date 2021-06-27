@@ -471,7 +471,6 @@
 </ul>
 </li>
 <li><p>代码</p>
-<p>​    </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (lockA) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有"</span> + lockA);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (lockB) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有"</span> + lockB);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
