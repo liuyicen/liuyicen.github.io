@@ -218,8 +218,6 @@
 <ul>
 <li><p>循环时间长开销很大</p>
 <ul>
-<li><!--CAS缺点-->
-</li>
 <li><pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndAddInt</span><span class="params">(Object var1,<span class="keyword">long</span> var2,<span class="keyword">int</span> var4)</span></span>{
     <span class="keyword">int</span> var5;
     <span class="keyword">do</span>{
@@ -227,14 +225,27 @@
     }<span class="keyword">while</span>(!<span class="keyword">this</span>.compareAndSwapInt(var1,var2,var5,var5+var4));
     <span class="keyword">return</span> var5;
 }
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
+&lt;!--￼<span class="number">0</span>--&gt;
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+      <span class="keyword">synchronized</span> (lockA) {
+          System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有："</span> + lockA +<span class="string">"\t,尝试获取锁："</span> + lockB);
+          <span class="keyword">try</span> {
+              TimeUnit.SECONDS.sleep(<span class="number">2</span>);
+          } <span class="keyword">catch</span> (InterruptedException e) {
+              e.printStackTrace();
+          }
+          <span class="keyword">synchronized</span> (lockB) {
+              System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有："</span> + lockB +<span class="string">"\t,尝试获取锁："</span> + lockA);
+          }
+      }
+}</code></pre>
 </li>
 </ul>
 </li>
-<li><!--死锁-->
-</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p>主要原因</p>
 <ul>
 <li>系统资源不足</li>
