@@ -464,19 +464,30 @@
 </li>
 </ul>
 <h3 id="死锁编码及定位分析"><a href="#死锁编码及定位分析" class="headerlink" title="死锁编码及定位分析"></a>死锁编码及定位分析</h3><ul>
-<li>是什么<ul>
+<li><p>是什么</p>
+<ul>
 <li>死锁是指两个或者两个以上的线程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力干涉，那他们都将无法推进下去。</li>
 <li>如果系统资源充足，进程的资源请求都能够得到满足，死锁出现的可能性就很低，否则就会因为争夺有限资源而陷入死锁</li>
 </ul>
 </li>
-<li><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2></li>
-<li>主要原因<ul>
+<li><p>代码</p>
+<p>​    </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (lockA) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有"</span> + lockA);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (lockB) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"\t,自己持有"</span> + lockB);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>主要原因</p>
+<ul>
 <li>系统资源不足</li>
 <li>进程运行推进的顺序不合适</li>
 <li>资源分配不当</li>
 </ul>
 </li>
-<li>解决<ul>
+<li><p>解决</p>
+<ul>
 <li>jps -l命令定位进程号</li>
 <li>jstack 进程号。找到死锁查看</li>
 </ul>
